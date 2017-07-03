@@ -1,0 +1,27 @@
+{
+  "name": "reader",
+  "version": "1.0.0",
+  "description": "depth camera data viewer",
+  "main": "SkeletonViewerApp.js",
+  "dependencies": {
+    "bl": "^1.1.2",
+    "browserify-nodent": "^1.0.22",
+    "dissolve": "^0.3.3",
+    "lodash.pick": "^4.4.0",
+    "regenerator-runtime": "^0.9.6",
+    "three": "^0.79.0",
+    "three-orbit-controls": "^72.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "zxc browserify src/SkeletonViewerApp.js -o skeleton-viewer-build.js -t [ babelify --presets [ latest ] ] -t browserify-nodent --debug"
+  },
+  "author": "femik",
+  "license": "ISC"
+}
