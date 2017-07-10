@@ -24,13 +24,11 @@ class SceneBuilder {
 class ViewerScene {
   constructor(options) {
     Object.assign(this, options);
-    // Object.assign(this.scene_setup_opts, { THREE: this.THREE });
     const scene_builder_opts = {
       json: this.scene_setup_opts,
       THREE: this.THREE,
     };
 
-    // const {json, THREE}?
     Object.assign(this, SceneBuilder.build(scene_builder_opts));
     this.initialised = false;
     // initialised when first frame arrives and becomes drawable
@@ -58,7 +56,6 @@ class ViewerScene {
   update_frame(frame) {
     if (this.initialised) {
       this.scene_buffer_manager.update_frame(frame);
-      // if (this.scene_buffer_manager)?
     } else {
       this.add_initial_frame(frame);
     }

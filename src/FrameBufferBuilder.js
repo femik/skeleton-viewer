@@ -39,6 +39,7 @@ class FrameBufferBuilder {
     //   { "threshhold": -2, "color": [0, 0.7, 0] },
     //   { "threshhold": 1e9999, "color": [0, 0, 0.7] }
     // ],
+    // TODO review how the colors are assigned
 
     const get_color_step = depth => (acc, item) => (
       acc || (depth < item.threshhold ? item.color : null)
