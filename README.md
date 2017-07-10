@@ -1,6 +1,8 @@
+# Skeleton Viewer
+
 A browser-based viewer for recorded binary 3D depth/skeleton tracking data. Written in Node, using Browserify, THREE and Dissolve.
 
-Build instructions
+# Build instructions
 
 ```
 npm install zxc

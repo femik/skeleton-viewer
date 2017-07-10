@@ -1,14 +1,9 @@
 class FrameBufferBuilder {
   constructor(options) {
     Object.assign(this, options);
-    this.count = 0;
   }
 
   build(frame) {
-    // const formatted_frame = {
-    //   markers: this.frame_parser.get_markers(frame),
-    //   points: this.frame_parser.get_points(frame),
-    // };
 
     const formatted_frame = this.frame_parser.convert(frame);
 
@@ -23,13 +18,7 @@ class FrameBufferBuilder {
         xyz: formatted_frame.markers,
         colors: this.build_color_array(formatted_frame.markers, this.marker_color),
       },
-      {
-        id: 'dijkstra',
-        xyz: new Float32Array(this.dijkstra[this.count]),
-        colors: this.build_color_array(new Float32Array(this.dijkstra[this.count]), [1, 1, 0]),
-      },
     ];
-    this.count += 1;
     return formatted_color_frame;
   }
 
@@ -44,24 +33,18 @@ class FrameBufferBuilder {
   }
 
   assign_colors(data, color_array, color_scheme) {
-    // const color_scheme = [
-    //   { threshold: this.far_threshhold, color: colors.far_color },
-    //   { threshold: this.near_threshhold, color: colors.near_color },
-    //   { threshold: Number.POSITIVE_INFINITY, color: colors.main_color },
-    // ];
+
+    // "color_scheme": [
+    //   { "threshhold": -4, "color": [0.7, 0.7, 0.7] },
+    //   { "threshhold": -2, "color": [0, 0.7, 0] },
+    //   { "threshhold": 1e9999, "color": [0, 0, 0.7] }
+    // ],
+
     const get_color_step = depth => (acc, item) => (
       acc || (depth < item.threshhold ? item.color : null)
     );
+
     const get_color = (depth, schema) => schema.reduce(get_color_step(depth), null);
-    // rewrite as a map
-    // maybe foreaech with assign
-    // depths are negative
-    // color_array.map((elem, i, arr) => {
-    //  let z_index = Math.floor(i / 3) * 3 + 2;
-    //  let depth = arr[z_index];
-    //  color_index = i%3;
-    //  return get_color(depth, tri_schema)[color_index];
-    // });
 
     const between = (item, first, second) => {
       return item < Math.max(first, second) && item >= Math.min(first, second);
