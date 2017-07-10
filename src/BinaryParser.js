@@ -2,7 +2,7 @@ import Dissolve from 'dissolve';
 
 class BinaryParser {
   static parser() {
-    // const Dissolve = require('dissolve');
+    
     const R = 176;
     const C = 144;
     const N = R * C;

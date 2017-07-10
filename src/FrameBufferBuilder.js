@@ -33,7 +33,7 @@ class FrameBufferBuilder {
   }
 
   assign_colors(data, color_array, color_scheme) {
-
+    // color scheme structure
     // "color_scheme": [
     //   { "threshhold": -4, "color": [0.7, 0.7, 0.7] },
     //   { "threshhold": -2, "color": [0, 0.7, 0] },

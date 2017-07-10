@@ -5,14 +5,8 @@ import readableWebToNode from './readableWebToNode';
 
 class FrameStreamer {
   constructor(options) {
-    // this.filename = options.filename;
-    // this.parser = options.parser;
-    // this.binary_reader = options.binary_reader;
-    // this.frame_transformer = options.frame_transformer;
-    // this.folder = options.folder;
     Object.assign(this, options);
     this.parser.pipe(this.frame_transformer);
-    // fold binary parser into this class
   }
 
   get_stream() {

@@ -14,7 +14,6 @@ class FrameTransformer extends stream.Transform {
   _transform(chunk, encoding, done) {
     this.push(this.frame_buffer_builder.build(chunk));
     done();
-    // this.push(this.color_frame_builder.convert(this.frame_parser.convert(chunk)));
   }
 }
 export default FrameTransformer;
